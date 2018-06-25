@@ -1,0 +1,61 @@
+S1 Configuration
+
+enable
+config t
+hostname ASw-1
+no ip domain-lookup
+int vlan 1
+ip address 10.10.10.100 255.255.255.0
+no shut
+
+end
+conf t
+enable secret C4aJa
+line vty 0
+password R4Xe3
+login
+end
+conf t
+line con 0
+password R4Xe3
+login
+end
+
+config t
+banner motd "warning Unauthroized access is strictly prohibited and presecuted to the full extent of the law."
+service password-encryption
+do copy r s
+
+
+
+
+
+
+S2 Configuration
+
+enable
+config t
+hostname ASw-2
+no ip domain-lookup
+int vlan 1
+ip address 10.10.10.150 255.255.255.0
+no shut
+end
+conf t
+enable secret C4aJa
+line vty 0
+password R4Xe3
+login
+end
+conf t
+line con 0
+password R4Xe3
+login
+end
+
+config t
+banner motd "warning Unauthroized access is strictly prohibited and presecuted to the full extent of the law."
+service password-encryption
+do copy r s
+
+

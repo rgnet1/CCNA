@@ -1,0 +1,38 @@
+S1 Configuration
+
+enable
+config t
+hostname S1
+no ip domain-lookup
+enable secret class
+line con 0
+password cisco
+login
+end
+
+config t
+banner motd "Unauthroized access is strictly prohibited and presecuted to the full extent of the law."
+exit
+
+copy r s
+
+
+
+S2 Configuration
+
+enable
+config t
+hostname S2
+no ip domain-lookup
+enable secret class
+line con 0
+password cisco
+login
+end
+
+config t
+banner motd "Unauthroized access is strictly prohibited and presecuted to the full extent of the law."
+exit
+
+copy r s
+

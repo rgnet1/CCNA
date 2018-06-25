@@ -1,0 +1,47 @@
+Switch 1 configuration
+
+enable
+conf t
+hostname S1
+line console 0
+password cisco
+login
+exit
+enable secret class
+banner motd "Authorized access only. Violators will be prosecuted to the full extent of the law."
+exit
+copy r s
+
+conf t
+int vlan 1
+ip addr 192.168.1.253 255.255.255.0
+no shut
+end
+copy r s
+
+
+
+
+Switch 2 configuration
+
+enable
+conf t
+hostname S2
+line console 0
+password cisco
+login
+exit
+enable secret class
+banner motd "Authorized access only. Violators will be prosecuted to the full extent of the law."
+exit
+copy r s
+
+
+conf t
+int vlan 1
+ip addr 192.168.1.254 255.255.255.0
+no shut
+end
+
+copy r s
+

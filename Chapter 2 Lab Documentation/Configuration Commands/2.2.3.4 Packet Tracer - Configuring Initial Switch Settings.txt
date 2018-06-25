@@ -1,0 +1,36 @@
+S1 Commands:
+
+enable
+config t
+hostname S1
+line console 0
+password letmein
+login
+exit
+enable password c1$c0
+enable secret itsasecret
+service password-encryption
+banner motd "This is a secure system. Authorized Access Only!"
+exit
+copy r s
+
+exit
+
+
+S2 Commands:
+
+enable
+config t
+hostname S2
+line console 0
+password letmein
+login
+exit
+enable password c1$c0
+enable secret itsasecret
+service password-encryption
+banner motd "Authorized access only. Unauthorized access is prohibited and violators will be prosecuted to the full extent of the law."
+exit
+copy r s
+
+exit
