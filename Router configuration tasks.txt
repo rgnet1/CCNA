@@ -15,4 +15,4 @@ Router Configuration Tasks
 5. Secure all passwords in the config file
 	service password-encryption
 6. Provide legal notification
-	banner motd "<message here>"
+	banner motd #<message here>#

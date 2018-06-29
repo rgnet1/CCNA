@@ -1,0 +1,18 @@
+R1
+enable
+conf t
+hostname R1
+line console 0
+password letmein
+login
+exit
+enable password cisco
+enable secret itsasecret
+service password-encryption
+banner motd #
+Unauthorized access is strictly prohibited.
+#
+exit
+copy r s
+
+exit
