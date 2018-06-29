@@ -1,0 +1,18 @@
+Router Configuration Tasks
+
+1. Configure hostname
+	hostname name
+2. Secure user Exec mode
+	line console 0
+	password <password>
+	login
+3. Secure ssh access
+	line vty 0 15
+	password <password>
+	login
+4. Secure privlege Exec mode
+	enable secret <password>
+5. Secure all passwords in the config file
+	service password-encryption
+6. Provide legal notification
+	banner motd "<message here>"

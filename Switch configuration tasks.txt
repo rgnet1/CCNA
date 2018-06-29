@@ -1,0 +1,24 @@
+Switch Configuration tasks:
+
+1. Configure host name
+	hostname <name>
+2. Secure user Exec mode
+	line console 0
+	password <password>
+	login
+3. Secure ssh access
+	line vty 0 15
+	password <password>
+	login
+4. Secure privlege Exec mode
+	enable secret <password>
+5. Secure all passwords in the config file
+	service password-encryption
+6. Provide legal notification
+	banner motd #<message here>#
+7. Configure the management SVI
+	int vlan 1
+	ip addr <ip address> <subnet mask>
+	no shut
+8. Save the configuration
+	copy run start
