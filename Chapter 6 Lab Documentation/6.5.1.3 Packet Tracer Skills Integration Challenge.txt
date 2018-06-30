@@ -1,0 +1,57 @@
+Router College
+
+enable
+conf t
+hostname College
+line console 0
+password cisco
+login
+exit
+enable secret class
+line vty 0
+password cisco
+login
+banner motd #
+*****************************************************
+                 Warning
+            Authorized access only. Violators will 
+			be prosecuted to the full extent of the 
+			law.
+
+*****************************************************
+#
+int g0/0
+ip addr 172.14.5.1 255.255.255.0
+no shut
+exit
+int g0/1
+ip addr 172.14.10.1 255.255.255.0
+no shut
+end
+copy r s
+
+
+Switch Class-B
+
+enable
+conf t
+hostname Class-B
+no ip domain-lookup
+int vlan 1
+ip address 172.14.10.35 255.255.255.0
+no shut
+enable secret class
+line vty 0
+password cisco
+login
+banner motd #
+*****************************************************
+                 Warning
+            Authorized access only. Violators will 
+			be prosecuted to the full extent of the 
+			law.
+
+*****************************************************
+#
+ip default-gateway 172.10.1
+do write mem
