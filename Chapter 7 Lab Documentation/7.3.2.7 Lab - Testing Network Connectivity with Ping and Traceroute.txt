@@ -1,0 +1,91 @@
+Local Router:
+
+hostname LOCAL
+no ip domain-lookup
+interface s0/0/0
+ip address 10.1.1.1 255.255.255.252
+clock rate 56000 
+no shutdown 
+interface g0/1 
+ip add 192.168.1.1 255.255.255.0
+no shutdown 
+router eigrp 1
+network 10.1.1.0 0.0.0.3
+network 192.168.1.0 0.0.0.255
+no auto-summary
+
+
+ISP Router:
+
+hostname ISP
+no ip domain-lookup
+int s0/0/0
+ip address 10.1.1.2 255.255.255.252
+no shut
+int s0/0/1
+ip add 10.2.2.2 255.255.255.252
+clock rate 56000
+no shut
+router eigrp 1
+network 10.1.1.0 0.0.0.3
+network 10.2.2.0 0.0.0.3
+no auto-summary
+end
+
+
+
+Remote Router:
+
+hostname REMOTE 
+no ip domain-lookup 
+interface s0/0/1  
+ip address 10.2.2.1 255.255.255.252  
+no shutdown
+interface g0/1  
+ip add 192.168.3.1 255.255.255.0 
+no shutdown 
+router eigrp 1  
+network 10.2.2.0 0.0.0.3  
+network 192.168.3.0 0.0.0.255 
+no auto-summary 
+end
+
+
+
+S1:
+
+hostname S1 
+no ip domain-lookup 
+interface vlan 1  
+ip add 192.168.1.11 255.255.255.0 
+no shutdown 
+exit 
+ip default-gateway 192.168.1.1 
+end
+
+S3:
+
+hostname S3 
+no ip domain-lookup 
+interface vlan 1  
+ip add 192.168.3.11 255.255.255.0  
+no shutdown  
+exit 
+ip default-gateway 192.168.3.1 
+end 
+
+
+
+
+
+HOST TABLE
+
+ip host REMOTE 10.2.2.1 192.168.3.1 
+ip host ISP 10.1.1.2 10.2.2.2 
+ip host LOCAL 192.168.1.1 10.1.1.1 
+ip host PC-C 192.168.3.3 
+ip host PC-A 192.168.1.3 
+ip host S1 192.168.1.11
+ip host S3 192.168.3.11
+end 
+
